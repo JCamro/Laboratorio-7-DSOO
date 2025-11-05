@@ -1,23 +1,24 @@
 public class Retiro extends Transaccion {
 
-    public Retiro(double monto, Cuenta cuenta) {
-        super(monto, cuenta);
+    public Retiro(Cuenta cuenta, Cliente cliente, Empleado empleado, double monto) {
+        super(cliente, empleado, cuenta, monto);
     }
 
-    public String realizarTransaccion() {
+    public boolean realizarTransaccion() {
         double saldoActual = cuenta.getSaldo();
 
         if (monto > saldoActual) {
-            return "Error: Fondos insuficientes. Saldo actual: S/." + saldoActual;
+            System.out.println("Error: Fondos insuficientes. Saldo actual: S/." + saldoActual);
+            return false;
         }
 
         cuenta.setSaldo(saldoActual - monto);
-        return "Retiro de S/." + monto + " realizado con éxito. "
-                + "Saldo actual: S/." + cuenta.getSaldo();
+        toString();
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Retiro -> " + super.toString();
+        return "--- RETIRO ---" + super.toString();
     }
 }

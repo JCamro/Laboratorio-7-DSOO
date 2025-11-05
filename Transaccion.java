@@ -8,7 +8,9 @@ public class Transaccion {
     protected Empleado empleado;
     protected Cliente cliente;
 
-    public Transaccion(double monto, Cuenta cuenta) {
+    public Transaccion(Cliente cliente, Empleado empleado, Cuenta cuenta, double monto) {
+        this.cliente = cliente;
+        this.empleado = empleado;
         this.monto = monto;
         this.cuenta = cuenta;
         this.fecha = LocalDateTime.now();
@@ -62,10 +64,10 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        return "Transacción de " + monto + 
-               " en la cuenta " + cuenta.getNumeroCuenta() +
-               " el " + getFechaFormateada() +
-               (cliente != null ? " | Cliente: " + cliente.getNombre() : "") +
-               (empleado != null ? " | Empleado: " + empleado.getNombre() : "");
+        return "\nMonto:" + monto + 
+               "\nCuenta" + cuenta.getNumeroCuenta() +
+               "\nFecha" + getFechaFormateada() +
+               (cliente != null ? "\nRemitente: " + cliente.getNombre() : "") +
+               (empleado != null ? "\nGestionado por: " + empleado.getNombre() : "");
     }
 }

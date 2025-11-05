@@ -1,18 +1,16 @@
 public class Deposito extends Transaccion {
 
-    public Deposito(double monto, Cuenta cuenta) {
-        super(monto, cuenta);
+    public Deposito(Cuenta cuenta, Empleado empleado, Cliente cliente, double monto) {
+        super(cliente, empleado, cuenta, monto);
     }
 
-    public String realizarTransaccion() {
+    public void realizarTransaccion() {
         double saldoActual = cuenta.getSaldo();
         cuenta.setSaldo(saldoActual + monto);
-        return "Depósito de S/." + monto + " realizado con éxito. "
-                + "Saldo actual: S/." + cuenta.getSaldo();
     }
 
     @Override
     public String toString() {
-        return "Depósito -> " + super.toString();
+        return "--- DEPOSITO --- " + super.toString();
     }
 }

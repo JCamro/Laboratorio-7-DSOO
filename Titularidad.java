@@ -48,4 +48,12 @@ public class Titularidad {
         this.tipo = nuevoTipo;
         return this.tipo;
     }
+
+    public String toString() {
+        return "---Contrato de Titularidad---"+
+                "\nFecha: "+fechaCreacion+
+                "\nCliente: "+cliente.getNombres()+" "+cliente.getApellidos()+
+                "\nTipo de Titular: "+tipo+
+                "\nCuenta: "+cuenta.getNumeroCuenta()+"\tTipo: "+cuenta.getTipoCuenta();
+    }
 }

@@ -3,8 +3,8 @@ public class Empleado extends Persona{
     private String idEmpleado;
     private String cargo;
 
-    public Empleado(String nombres, String apellidos, int edad, String residencia, String correo, String idEmpleado, String cargo) {
-        super(nombres, apellidos, edad, residencia, correo);
+    public Empleado(String nombres, String apellidos, int edad, int dni, String residencia, String correo, String idEmpleado, String cargo) {
+        super(nombres, apellidos, edad, dni, residencia, correo);
         setCargo(cargo);
         setIdEmpleado(idEmpleado);
     }
@@ -14,4 +14,15 @@ public class Empleado extends Persona{
 
     public String getIdEmpleado() {return idEmpleado;}
     public String getCargo() {return cargo;}
+
+    public String toString() {
+        return "-------"+
+                "\nNombres y Apellidos: "+nombres + " " + apellidos+
+                "\nIdCliente: "+idEmpleado+
+                "\nCargo: "+cargo+
+                "\nEdad: "+edad+
+                "\nDNI: "+dni+
+                "\nCorreo: "+correo+
+                "\nResidencia: "+residencia; 
+    }
 }
