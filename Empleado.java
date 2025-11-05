@@ -18,7 +18,7 @@ public class Empleado extends Persona{
     public String toString() {
         return "-------"+
                 "\nNombres y Apellidos: "+nombres + " " + apellidos+
-                "\nIdCliente: "+idEmpleado+
+                "\nIdEmpleado: "+idEmpleado+
                 "\nCargo: "+cargo+
                 "\nEdad: "+edad+
                 "\nDNI: "+dni+

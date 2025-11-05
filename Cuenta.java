@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Cuenta {
     private int numeroCuenta;
@@ -6,6 +7,7 @@ public class Cuenta {
     private double saldo;
     private int clave;
     private LocalDateTime fechaApertura;
+    private ArrayList<Transaccion> listatransacciones = new ArrayList<>(); 
     
     public Cuenta(int numeroCuenta, String tipoCuenta, double saldo, int clave) {
         setNumeroCuenta(numeroCuenta);
@@ -23,17 +25,18 @@ public class Cuenta {
     //GETTERS
     public LocalDateTime getFechaApertura() {return fechaApertura;}
     public int getNumeroCuenta() {return numeroCuenta;}
-    public double consultarSaldo() {return saldo;}
+    public double getSaldo() {return saldo;}
     public String getTipoCuenta() {return tipoCuenta;}
     public int getClave() {return clave;}
+    public ArrayList<Transaccion> getTransacciones() {return listatransacciones;}
 
-    //DEPOSITA DINERO
-    public void deposito(double monto) {this.saldo-=monto;}
-    //RETIRA DINERO
-    public void retiro(double monto) {this.saldo-=monto;}
+    //AÑADE TRANSACCIONES REALIZADAS
+    public void añadirTransaccion(Transaccion transaccion) {
+        this.listatransacciones.add(transaccion);
+    }
 
     public String toString() {
-        return "---Contrado de apertura de Cuenta---"+
+        return "---Contrato de apertura de Cuenta---"+
                 "\nNum. Cuenta: "+numeroCuenta+
                 "\nTipo de Cuenta: "+tipoCuenta+
                 "\nFecha de Apertura: "+fechaApertura;

@@ -64,10 +64,11 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        return "\nMonto:" + monto + 
+        return "\nTransaccion nro: "+
+               "\nMonto:" + monto + 
                "\nCuenta" + cuenta.getNumeroCuenta() +
                "\nFecha" + getFechaFormateada() +
-               (cliente != null ? "\nRemitente: " + cliente.getNombre() : "") +
-               (empleado != null ? "\nGestionado por: " + empleado.getNombre() : "");
+               (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") +
+               (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }
 }
