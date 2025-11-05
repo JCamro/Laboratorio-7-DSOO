@@ -7,7 +7,7 @@ public class Cuenta {
     private double saldo;
     private int clave;
     private LocalDateTime fechaApertura;
-    private ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
+    private ArrayList<Transaccion> listatransacciones = new ArrayList<>(); 
     
     public Cuenta(int numeroCuenta, String tipoCuenta, double saldo, int clave) {
         setNumeroCuenta(numeroCuenta);
@@ -28,18 +28,15 @@ public class Cuenta {
     public double getSaldo() {return saldo;}
     public String getTipoCuenta() {return tipoCuenta;}
     public int getClave() {return clave;}
+    public ArrayList<Transaccion> getTransacciones() {return listatransacciones;}
 
-    //DEPOSITA DINERO
-    public void deposito(double monto) {this.saldo+=monto;}
-    //RETIRA DINERO
-    public void retiro(double monto) {this.saldo-=monto;}
-    // Añade transacciones
+    //AÑADE TRANSACCIONES REALIZADAS
     public void añadirTransaccion(Transaccion transaccion) {
-        this.listaTransacciones.add(transaccion);
+        this.listatransacciones.add(transaccion);
     }
 
     public String toString() {
-        return "---Contrado de apertura de Cuenta---"+
+        return "---Contrato de apertura de Cuenta---"+
                 "\nNum. Cuenta: "+numeroCuenta+
                 "\nTipo de Cuenta: "+tipoCuenta+
                 "\nFecha de Apertura: "+fechaApertura;

@@ -1,8 +1,7 @@
 public class Cliente extends Persona {
     private String idCliente;
     private String estado;
-    
-    
+
     public Cliente(String nombres, String apellidos, int edad, int dni, String residencia, String idCliente, String correo){
         super(nombres, apellidos, edad, dni, correo, residencia);
         setIdCliente(idCliente);

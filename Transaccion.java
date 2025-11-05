@@ -7,13 +7,15 @@ public class Transaccion {
     protected LocalDateTime fecha;
     protected Empleado empleado;
     protected Cliente cliente;
+    protected String idTransaccion;
 
-    public Transaccion(Cliente cliente, Empleado empleado, Cuenta cuenta, double monto) {
+    public Transaccion(Cliente cliente, Empleado empleado, Cuenta cuenta, double monto, String idTransaccion) {
         this.cliente = cliente;
         this.empleado = empleado;
         this.monto = monto;
         this.cuenta = cuenta;
         this.fecha = LocalDateTime.now();
+        this.idTransaccion = idTransaccion;
     }
 
     // --- Getters y Setters ---
@@ -23,6 +25,12 @@ public class Transaccion {
 
     public void setMonto(double monto) {
         this.monto = monto;
+    }
+    public String getIdTransaccion() {
+        return idTransaccion;
+    }
+    public void setIdTransaccion(String idTransaccion) {
+        this.idTransaccion = idTransaccion;
     }
 
     public Cuenta getCuenta() {
@@ -64,10 +72,11 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        return "\nMonto:" + monto + 
+        return "\nTransaccion nro: "+
+               "\nMonto:" + monto + 
                "\nCuenta" + cuenta.getNumeroCuenta() +
                "\nFecha" + getFechaFormateada() +
-               (cliente != null ? "\nRemitente: " + cliente.getNombre() : "") +
-               (empleado != null ? "\nGestionado por: " + empleado.getNombre() : "");
+               (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") +
+               (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }
 }
