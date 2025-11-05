@@ -15,7 +15,7 @@ public class Cliente extends Persona {
     public String getEstado() {return estado;}  
     
     public String toString() {
-        return "-------"+
+        return "---Informacion Cliente---"+
                 "\nNombres y Apellidos: "+nombres + " " + apellidos+
                 "\nIdCliente: "+idCliente+
                 "\nEdad: "+edad+
