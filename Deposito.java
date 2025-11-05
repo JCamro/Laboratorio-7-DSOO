@@ -1,7 +1,7 @@
 public class Deposito extends Transaccion {
 
-    public Deposito(Cuenta cuenta, Empleado empleado, Cliente cliente, double monto) {
-        super(cliente, empleado, cuenta, monto);
+    public Deposito(Cuenta cuenta, Empleado empleado, Cliente cliente, double monto, String idTransaccion) {
+        super(cliente, empleado, cuenta, monto, idTransaccion);
     }
 
     public void realizarTransaccion() {

@@ -180,14 +180,17 @@ public class GestorBanco {
 
 
     // - REALIZAR TRANSACCION TIPO DEPOSITO -
-    public void realizarDeposito(String idCliente, String idEmpleado, int numeroCuenta, double monto) {
+    public void realizarDeposito(String idCliente, String idEmpleado, int numeroCuenta, double monto, String idTransaccion) {
         
         //Verifica que las entradas en datos String no sean null ni ""
-        if (!stringValido(idCliente) || !stringValido(idEmpleado)) {
-            System.out.println("Valores ingresados (IdCliente, IdEmpleado) no deben estar vacios");
+        if (!stringValido(idCliente) || !stringValido(idEmpleado) || !stringValido(idTransaccion)) {
+            System.out.println("Valores ingresados (IdCliente, IdEmpleado, IdTransaccion) no deben estar vacios");
             return;
         }
-        
+        if (buscarTransaccion(idTransaccion)!=null) {
+            System.out.println("Ya existe una transaccion con id "+ idTransaccion);
+            return;
+        }
         //Verifica que el monto a depositar sea positivo
         if (!numeroPositivo(monto)) {
             System.out.println("Monto a depositar debe de ser positivo");
@@ -203,7 +206,7 @@ public class GestorBanco {
         if (empleado==null) {System.out.println("Codigo de Empleado no existente, no se realizo el deposito"); return;}
         
         //Se crea el objeto deposito
-        Deposito deposito = new Deposito(cuenta, empleado, cliente, monto);
+        Deposito deposito = new Deposito(cuenta, empleado, cliente, monto, idTransaccion);
         //Se realiza el movimiento
         deposito.realizarTransaccion();
         //Se añade al registro de transacciones de la cuenta
@@ -213,11 +216,11 @@ public class GestorBanco {
     
 
     // - REALIZAR TRANSACCION TIPO DEPOSITO -
-    public void realizarRetiro(String idCliente, String idEmpleado, int numeroCuenta, double monto, int clave) {
+    public void realizarRetiro(String idCliente, String idEmpleado, int numeroCuenta, double monto, String idTransaccion, int clave) {
         
         //Verifica que las entradas en datos String no sean null ni ""        
-        if (!stringValido(idCliente) || !stringValido(idEmpleado)) {
-            System.out.println("Valores ingresados (IdCliente, IdEmpleado) no deben estar vacios");
+        if (!stringValido(idCliente) || !stringValido(idEmpleado) || !stringValido(idTransaccion)) {
+            System.out.println("Valores ingresados (IdCliente, IdEmpleado, IdTransaccion) no deben estar vacios");
             return;
         }
         
@@ -228,6 +231,7 @@ public class GestorBanco {
         if (cliente==null) {System.out.println("Codigo de cliente no existente, no se realizo el deposito"); return;}
         if (cuenta==null) {System.out.println("Numero de cuenta no existente, no se realizo el deposito"); return;}
         if (empleado==null) {System.out.println("Codigo de Empleado no existente, no se realizo el deposito"); return;}
+        if (buscarTransaccion(idTransaccion)!=null) {System.out.println("Ya existe una transaccion con id "+ idTransaccion);}
         
         //Se comprueba si la clave es correcta para realizar el deposito
         if (clave!=cuenta.getClave()) {
@@ -241,7 +245,7 @@ public class GestorBanco {
             return;
         }
         //Se crea el objeto retiro
-        Retiro retiro = new Retiro(cuenta, cliente, empleado, monto);
+        Retiro retiro = new Retiro(cuenta, cliente, empleado, monto, idTransaccion);
 
         //Si cumple la condicion, no se realiza el retiro 
         if (!retiro.realizarTransaccion()) {
@@ -354,6 +358,15 @@ public class GestorBanco {
         for (Empleado empleado : listaEmpleados) {
             if (dni==empleado.getDni()) {
                 return empleado;
+            }
+        }
+        return null;
+    }
+
+    public Transaccion buscarTransaccion(String idTransaccion) {
+        for (Transaccion transaccion : listaTransacciones) {
+            if (transaccion.getIdTransaccion().equals(idTransaccion)) {
+                return transaccion;
             }
         }
         return null;

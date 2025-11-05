@@ -1,7 +1,7 @@
 public class Retiro extends Transaccion {
 
-    public Retiro(Cuenta cuenta, Cliente cliente, Empleado empleado, double monto) {
-        super(cliente, empleado, cuenta, monto);
+    public Retiro(Cuenta cuenta, Cliente cliente, Empleado empleado, double monto, String idTransaccion) {
+        super(cliente, empleado, cuenta, monto, idTransaccion);
     }
 
     public boolean realizarTransaccion() {

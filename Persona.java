@@ -34,3 +34,5 @@ abstract class Persona {
     public void setCorreo(String correo) {this.correo = correo;}
     public void setDni(int dni) {this.dni = dni;}
 }
+
+
